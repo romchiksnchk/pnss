@@ -41,6 +41,9 @@ class View
         return $this->getRoot() . "/$view.php";
     }
 
+    /**
+     * @throws Exception
+     */
     public function render(string $view = '', array $data = []): string
     {
         $path = $this->getPathToView($view);
