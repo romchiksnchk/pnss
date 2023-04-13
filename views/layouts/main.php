@@ -12,11 +12,7 @@
 <div>
     <?= $content ?? ''; ?>
 </div>
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/master
 </body>
 </html>
-
 
