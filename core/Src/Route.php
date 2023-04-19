@@ -4,6 +4,7 @@ namespace Src;
 
 use Error;
 
+
 class Route
 {
     private static array $routes = [];
@@ -40,8 +41,21 @@ class Route
         if (!method_exists($class, $action)) {
             throw new Error('This method does not exist');
         }
-
-
-        call_user_func([new $class, $action]);
+        call_user_func([new $class, $action], new Request());
     }
+    public function redirect(string $url): void
+    {
+        header('Location: ' . $this->getUrl($url));
+    }
+
+    public function getUrl(string $url): string
+    {
+        return self::$prefix . $url;
+    }
+
+    public function __construct(string $prefix = '')
+    {
+        self::setPrefix($prefix);
+    }
+
 }
